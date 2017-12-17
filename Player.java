@@ -1,61 +1,70 @@
 import java.util.ArrayList;
-import java.util.Random;
-public class Player extends Person {
-	 private String name;
-	 private int chips;
-	 private int bet;
-	 private ArrayList<Card> oneRoundCard;
-	 public Player(String name, int chips) {
-	//Player constructor穝糤Playerン惠璶﹎局Τ膚絏单ㄢ把计
-		 this.name=name;
-		 this.chips=chips;
-		 
-	 }
-	 public String getName() {
-		 return name;
-	 }
-	 public int makeBet() {
-		 bet = 1; //Default the base bet is 1
-		 if( chips==0) //out of money
-		 {
-			 bet =0;//no money can bet
-		 }
-		 return bet;
-	 }
-	 public void setOneRoundCard(ArrayList<Card> cards) {
-		 oneRoundCard=cards;//砞﹚礟Ы┮眔 setter
-	 }
-	 public boolean hitMe() {//琌璶礟
-		 if (getTotalValue()<17) //if less than 17 ,get one more card
-		 {
-			return true; 
-		 }
-		 else
-			 return false;
-	 }
-	 public int getTotalValue() {
-		 int point = 0;//the total point in this game
-		 for(int n=0; n<oneRoundCard.size(); n++)
-		 {
-			 point += oneRoundCard.get(n).getRank();
-		 }
-		 return point;
-	 }
-	 public int getCurrentChips() {
-		 return chips;
-	 }
-	 public void increaseChips (int diff) {
-		 chips+= diff;
-	 }
-	 public void sayHello() {
-		 System.out.println("Hello, I am " + name + ".");
-		 System.out.println("I have " + chips + " chips.");
 
-	 }
-	@Override
-	public boolean hit_me(Table table) {
-		// TODO Auto-generated method stub
-		return false;
+public class Player extends Person{
+	private String name; //paleyer name
+	private int chips; // palyer chips
+	private int bet; // palyer going to bet
+	
+	
+	public Player(String name, int chips) {
+		this.name=name;
+		this.chips=chips;
 	}
-}
+	public String getName() {
+		return name;
+	}
+	public int makeBet() {
+		if(chips!=0) {
+			bet=1; 
+			return bet;
+		}
+		else {
+			return 0;
+		}
+	}
 
+	public int getCurrentChips() {
+		return chips;
+	}
+	public void increaseChips (int diff) {
+		chips+=diff;
+	}
+	public void sayHello() {
+		System.out.println("HI, I'm " + name );
+		System.out.println("I have " + chips + " chips.");
+	}
+	@Override
+	public boolean hit_me(Table tbl) {
+		int total_value = getTotalValue();
+		if (total_value < 17)
+			return true;
+		else if (total_value == 17 && hasAce()) {
+			return true;
+		} else {
+			if (total_value >= 21)
+				return false;
+			else {
+				Player[] players = tbl.get_player();
+				int lose_count = 0;
+				int v_count = 0;
+				int[] betArray = tbl.get_players_bet();
+				for (int i = 0; i < players.length; i++) {
+					if (players[i] == null) {
+						continue;
+					}
+					if (players[i].getTotalValue() != 0) {
+						if (total_value < players[i].getTotalValue()) {
+							lose_count += betArray[i];
+						} else if (total_value > players[i].getTotalValue()) {
+							v_count += betArray[i];
+						}
+					}
+				}
+				if (v_count < lose_count)
+					return true;
+				else
+					return false;
+			}
+		}
+	} 
+}
