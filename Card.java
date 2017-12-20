@@ -96,6 +96,7 @@ public class Card {
 			}
 			break;
 			}
+	
 		}
 	public Suit getSuit(){
 		return suit;

@@ -1,4 +1,4 @@
-# 物件導向程式設計HW5說明
+﻿# 物件導向程式設計HW5說明
 
 1. 點作業[連結](https://classroom.github.com/a/oW9npdaP)，接受作業，並用github desktop將作業Clone到本機端資料夾CGUIMJava2_HW5 (自行新增此資夾)
 2. 新增一個HW5專案
@@ -38,10 +38,15 @@
     - 請每個玩家打招呼 (提示 say_hello())
     - 請每個玩家下注 (提示 make_bet())
     - 每個玩家下的注要存在pos_betArray供之後使用
-  - private void distribute_cards_to_dealer_and_players()
+ 
+
+
+ - private void distribute_cards_to_dealer_and_players()
     - 發牌給玩家跟莊家，先發兩張打開的牌給玩家，再一張蓋著的牌，以及一張打開的牌給莊家。(提示: setOneRoundCard())
     - 發牌給莊家後，在畫面上印出莊家打開的牌"Dealer's face up card is " (提示: printCard())
-  - private void ask_each_player_about_hits()
+  
+
+- private void ask_each_player_about_hits()
     - 問每個玩家要不要牌 (提示: hit_me(Table tbl))
     - 請參照HW4.java，使用do while迴圈詢問各個玩家
     - 詢問順序: 按照加入牌局的順序而定 (位置)
@@ -50,7 +55,9 @@
     - 如果玩家不要牌了，請在畫面上印出 玩家的名字+"Pass hit!"
   - private void ask_dealer_about_hits()
     - 詢問莊家是否要牌，完成後，印出"Dealer's hit is over!"
-  - private void calculate_chips()
+ 
+
+ - private void calculate_chips()
     - 印出莊家的點數和牌"Dealer's card value is "+總點數+" ,Cards:"+牌們 (提示: printAllCard())
     - 莊家跟每一個玩家的牌比
     - 針對每個玩家，先印出 玩家姓名+" card value is "+玩家總點數

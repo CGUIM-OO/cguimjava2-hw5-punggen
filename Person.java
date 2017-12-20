@@ -46,5 +46,6 @@ public abstract class Person {
 		for(Card c : oneRoundCard){
 			c.printCard();
 		}
+		
 	}
 }

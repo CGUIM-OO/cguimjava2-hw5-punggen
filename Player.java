@@ -31,7 +31,7 @@ public class Player extends Person{
 	}
 	public void sayHello() {
 		System.out.println("HI, I'm " + name );
-		System.out.println("I have " + chips + " chips.");
+		System.out.println("I have " + chips + " chips."+"\n---------------");
 	}
 	@Override
 	public boolean hit_me(Table tbl) {
