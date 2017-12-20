@@ -24,7 +24,7 @@ public class Table {
 		pCards.add(p1);
 		pCards.add(p2);
 		pCards.add(p3);
-		pCards.add(p4);
+		pCards.add(p4);//add players into all 
 	}
 	public void set_player(int pos, Player p) {
 		//try { pos不能多於4
@@ -52,7 +52,7 @@ public class Table {
 	}
 	private void ask_dealer_about_hits() {
 		boolean hit;
-		if(dealer.getTotalValue()>21)
+		if(dealer.getTotalValue()>21)//
 		{
 			System.out.println("dealer's point is:"+dealer.getTotalValue()+"   booooomed");
 			System.out.println("Player win!! \n");
@@ -144,7 +144,7 @@ public class Table {
 				System.out.println("****");
 			}
 			else {
-				boolean hit=false;
+				boolean hit=false; //default not to draw
 				do{ 			//loop for ask card until boomed or hit==false
 					hit=allP[i].hit_me(this); 
 					if(hit){
@@ -181,7 +181,7 @@ public class Table {
 		System.out.println("---------------");
 				
 		for(int i=0;i<allP.length;i++)
-		{//give players 2 open cards
+		{//give players 2 open cards 
 			pCards.get(i).add(deckcard.getOneCard(true));
 			pCards.get(i).add(deckcard.getOneCard(true));
 			allP[i].setOneRoundCard(pCards.get(i)); 
@@ -199,7 +199,7 @@ public class Table {
 		ask_dealer_about_hits();
 		calculate_chips();
 	}
-	/////////////////////////////
+	/////////////////////////////test area
 	private int playersNO_more_than_dealer() {
 		int count=0;
 		for(int i=0;i<4;i++) 
